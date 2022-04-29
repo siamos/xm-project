@@ -15,7 +15,7 @@
 
 </head>
 <body>
-<h1>Aris Siamos</h1>
+<h1>XM-PROJECT BY Aris Siamos</h1>
 <div class="container">
     <div id="main" class="row">
         @yield('content')

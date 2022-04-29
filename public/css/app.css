@@ -11287,10 +11287,12 @@ textarea.form-control-lg {
   }
 }
 body {
+  margin: 50px;
   background-color: #f8fafc;
 }
 body h1, body .h1 {
   text-align: center;
+  margin: 20px 0;
 }
 
 .form-group {

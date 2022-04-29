@@ -1,7 +1,6 @@
 @extends('layouts.default')
 @section('content')
     <div id="chartContainer" style="height: 370px; width: 100%;"></div>
-
     <table class="table table-sm">
         <thead>
         <tr>
@@ -18,11 +17,11 @@
             @foreach($data as $value)
                 <tr>
                     <td>{{ date('Y-m-d', $value->date) }}</td>
-                    <td>{{ $value->open }}</td>
-                    <td>{{ $value->high }}</td>
-                    <td>{{ $value->low }}</td>
-                    <td>{{ $value->close }}</td>
-                    <td>{{ $value->volume }}</td>
+                    <td>{{ $value->open ?? null }}</td>
+                    <td>{{ $value->high ?? null }}</td>
+                    <td>{{ $value->low ?? null }}</td>
+                    <td>{{ $value->close ?? null }}</td>
+                    <td>{{ $value->volume ?? null }}</td>
                 </tr>
             @endforeach
         @endif
@@ -33,17 +32,18 @@
 @section('footer')
     <script>
         window.onload = function() {
-
+            var title = "{{ $company['Company Name'] }}";
             var chart = new CanvasJS.Chart("chartContainer", {
                 title: {
-                    text: "Ericsson Stock Price"
+                    text: title
                 },
                 subtitles: [{
                     text: "Currency in US Dollar"
                 }],
                 axisX: {
-                    interval: 1,
-                    valueFormatString: "MMM-YY",
+                    interval: 7,
+                    intervalType: "day",
+                    valueFormatString: "YY-MM-DD",
                     labelAngle: -45
                 },
                 axisY: {
@@ -53,7 +53,7 @@
                     type: "candlestick",
                     xValueType: "dateTime",
                     yValueFormatString: "#,##0.00000 us",
-                    xValueFormatString: "MMM-YY",
+                    xValueFormatString: "YY-MM-DD",
                     dataPoints: {!! $chartPoints !!}
                 }]
             });

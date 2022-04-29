@@ -44,12 +44,12 @@ class HomeService implements IHome
     }
 
 
-    public function findCompanyBySymbol(string $companySymbol)
+    public function findCompanyBySymbol(string $companySymbol): ?array
     {
         $data = json_decode(file_get_contents(HomeConstants::NASDAQ_API_URL));
         foreach ($data as $company) {
             if ($company->Symbol === $companySymbol) {
-                return $company;
+                return (array)$company;
             }
         }
 
@@ -65,11 +65,19 @@ class HomeService implements IHome
         });
     }
 
-    public function getChartDataPoints(array $dataFiltered)
+    public function getChartDataPoints(array $dataFiltered): string
     {
         $dataPoints = [];
         foreach ($dataFiltered as $data) {
-            $dataPoints[] = ["x" => $data->date * 1000, "y" => [$data->open, $data->high, $data->low, $data->close]];
+            $dataPoints[] = [
+                "x" => $data->date * 1000,
+                "y" => [
+                    $data->open ?? null,
+                    $data->high ?? null,
+                    $data->low ?? null,
+                    $data->close ?? null
+                ]
+            ];
         }
 
         return json_encode($dataPoints, JSON_NUMERIC_CHECK);

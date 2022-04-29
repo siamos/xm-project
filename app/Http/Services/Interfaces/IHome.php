@@ -11,5 +11,7 @@ interface IHome
 {
     public function getRapidFinancialApi(string $companySymbol): string;
     public function filterDataWithStartEndDate(string $data, int $startDate, int $endDate): Collection;
-    public function findCompanyBySymbol(string $companySymbol);
+    public function findCompanyBySymbol(string $companySymbol): ?array;
+    public function getChartDataPoints(array $dataFiltered): string;
+
 }

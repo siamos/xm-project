@@ -8,9 +8,11 @@
 @import '~bootstrap/scss/bootstrap';
 
 body {
+    margin: 50px;
     background-color: $body-bg;
     h1 {
         text-align: center;
+        margin: 20px 0;
     }
 }
 

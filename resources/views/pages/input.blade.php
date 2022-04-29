@@ -27,7 +27,7 @@
         {{ Form::text('end_date', null, ['id' => 'end-date', 'required' => 'required']) }}
 
         <div class="form-group">
-            {{Form::submit('GET DATA!')}}
+            {{Form::submit('GET DATA')}}
         </div>
     </div>
     {{ Form::close() }}
