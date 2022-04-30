@@ -3,7 +3,7 @@
 
 
 - clone project
-- cp .env.example .env
+- cp .env.example .env and cd xm-project
 - run composer install and npm install
 - run ./vendor/bin/sail up -d or docker-compose up -d
 - run ./vendor/bin/sail artisan migrate or docker-compose exec laravel.test php artisan migrate
